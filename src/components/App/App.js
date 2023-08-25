@@ -330,7 +330,7 @@ function App() {
     <main className='App'>
         <header>Rancid Tomatillos</header>
         <h1>Movies</h1>
-        <Movies>movies={movies} </Movies>
+        <Movies movies={movies} />
     </main>
   )
 }
@@ -350,8 +350,8 @@ export default App;
 //   return(
 //   <main className='App'>
 //       <h1>IdeaBox</h1>
-//       <Form addIdea={addIdea}/>
-//       <Ideas ideas={ideas} deleteIdea={deleteIdea}/>
+      // <Form addIdea={addIdea}/>
+      // <Ideas ideas={ideas} deleteIdea={deleteIdea}/>
 //     </main>
 //   )
 // }
