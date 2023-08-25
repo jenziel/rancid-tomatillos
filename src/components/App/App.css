@@ -1,5 +1,21 @@
+
+
+:root {
+  --green: #1ebc35;
+  --orange: #ff8001;
+  --blue: #41bcf4;
+  --blue-black: #14191e;
+  --lighter-blue-black: #1f252d;
+  --light-gray: #1f252d;
+  --darkest-blue-black: #14181c;
+  --cool-gray: #8C92AC;
+  --white: #FFFFFF;
+
+}
+
 .App {
   text-align: center;
+  background-color: var(--cool-gray);
 }
 
 .App-logo {
@@ -14,16 +30,37 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: var(--darkest-blue-black);
+  height: 9vh;
+  padding-left: 16vw;
+  padding-right: 20vw;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
+.App-header > h1 {
+  font-size: 4vh;
+}
+
+.circle {
+  width: 30px; 
+  height: 30px;
+  border-radius: 50%; 
+  overflow: hidden; 
+  position: relative;
+  background-color: var(--white)
+}
+.circle img {
+  width: 100%; 
+  height: auto; 
+  position: absolute; 
+  top: 0;
+  left: 0;
+}
 .App-link {
   color: #61dafb;
 }
