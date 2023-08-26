@@ -5,7 +5,7 @@ function MovieCard({title, posterPath, backdropPath, rating, releaseDate }){
     return (
         <div className='movie-card'>
             <h3>{title}</h3>
-            <img src={backdropPath}/>
+            {/* <img src={backdropPath}/> */}
             <img src={posterPath}/>
             <p>{rating} stars</p>
             <p>{releaseDate}</p>
