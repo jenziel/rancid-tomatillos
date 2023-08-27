@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import Movies from "../Movies/Movies";
-import circle from '../../images/circle.jpeg';
+import tomatillo from '../../images/tomatillo.png';
 import circle2 from '../../images/circle2.png';
 // import movieData from '../../data/movieData';
 
@@ -412,7 +412,13 @@ function App() {
   return (
     <main className='App'>
       <header className='App-header'>
-        <h1>Rancid Tomatillos</h1>
+        <div className="App-logo">
+          <img src={tomatillo} />
+          <img src={tomatillo} />
+          <img src={tomatillo} />
+        <h1> Rancid Tomatillos</h1>
+        </div>
+        
           <div className='circle'>
             <img src={circle2} alt="profile"></img>
           </div>

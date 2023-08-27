@@ -14,8 +14,9 @@ function Movies({ movies }) {
       {movies.map((movie) => (
         <MovieCard
           title={movie.title}
-          posterPath={movie.poster_path}
           backdropPath={movie.backdrop_path}
+          posterPath={movie.poster_path}
+        
           rating={movie.average_rating}
           releaseDate={movie.release_date}
           id={movie.id}
