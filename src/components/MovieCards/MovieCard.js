@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./MovieCard.css";
+import Header from "../Header/Header";
+import "../Header/Header.css";
 
 function MovieCard({ title, posterPath, backdropPath, rating, releaseDate }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -26,41 +28,51 @@ function MovieCard({ title, posterPath, backdropPath, rating, releaseDate }) {
     ];
     const newDate = parseInt(releaseDate.substring(5, 7));
     months.forEach((month) => {
-      console.log(newDate)
+      console.log(newDate);
       if (month.num === newDate) {
         formattedMonth = month.name;
       }
     });
 
-    const justTheYear =  parseInt(releaseDate.substring(0, 4), 10);
+    const justTheYear = parseInt(releaseDate.substring(0, 4), 10);
     console.log(newDate, "newDate");
     console.log("month", newDate[1]);
-    return `${formattedMonth} ${justTheYear}`
+    return `${formattedMonth} ${justTheYear}`;
     // return newDate
   };
   const formattedRating = (rating) => {
-    const wholeNumber = Math.round(rating)
-    return wholeNumber
-  }
+    const wholeNumber = Math.round(rating);
+    return wholeNumber;
+  };
 
   return (
     <div
       className={`movie-card ${isExpanded ? "expanded" : ""}`}
       onClick={toggleExpandedView}
     >
-      <img src={posterPath} alt={title} />
       {isExpanded && (
         <div className='expanded-content'>
-          <h3>{title}</h3>
-          <img src={backdropPath} alt={title} />
-          <img
-            src={posterPath}
-            alt={title}
-            className='expanded-card-movie-poster'
-          />
-          <p>{formattedRating(rating)}/10 stars</p>
-          <p>Released: {formatDate(releaseDate)}</p>
+          <div className='upper-section'>
+            <img src={backdropPath} alt={title} className='backDrop' />
+          </div>
+          <div className='lower-section'>
+            <div className='left-side'>
+              <img
+                src={posterPath}
+                alt={title}
+                className='expanded-card-movie-poster'
+              />
+            </div>
+            <div className='right-side'>
+              <h2>{title}</h2>
+              <p>{formattedRating(rating)}/10 stars</p>
+              <p>Released: {formatDate(releaseDate)}</p>
+            </div>
+          </div>
         </div>
+      )}
+      {!isExpanded && (
+        <img className='original-view' src={posterPath} alt={title} />
       )}
     </div>
   );
