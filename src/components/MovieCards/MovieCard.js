@@ -52,8 +52,9 @@ function MovieCard({ title, posterPath, backdropPath, rating, releaseDate }) {
     >
       {isExpanded && (
         <div className='expanded-content'>
-          <div className='upper-section'>
-            <img src={backdropPath} alt={title} className='backDrop' />
+          <div className='vignette-container'>
+            <img src={backdropPath} alt={title} className='backDrop vignette-image' />
+            <div class="vignette-overlay"></div>
           </div>
           <div className='lower-section'>
             <div className='left-side'>

@@ -11,6 +11,7 @@
   --darkest-blue-black: #14181c;
   --cool-gray: #8C92AC;
   --white: #FFFFFF;
+  --gray: #B9BDC1;
 
 }
 body {
@@ -20,8 +21,9 @@ body {
 
 .App {
   text-align: center;
-  background-color: var(--cool-gray);
+  background-color: var(--lighter-blue-black);
   font-family: 'Space Grotesk', sans-serif;
+  color: var(--gray)
 }
 
 .App-link {
