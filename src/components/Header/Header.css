@@ -1,0 +1,59 @@
+
+@import url(https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;1,700&family=Roboto+Mono:wght@100;200;300;500&family=Space+Grotesk:wght@700&display=swap);
+
+
+
+.App-logo > img {
+    height: 6vh;
+  }
+
+  .App-logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    pointer-events: none;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  /* @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  } */
+  
+  .App-header {
+    background-color: var(--darkest-blue-black);
+    height: 9vh;
+    padding-left: 16vw;
+    padding-right: 20vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    color: white;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  
+  .App-header > h1 {
+    font-size: 4vh;
+    padding-left: 30px;
+  }
+  
+  .circle {
+    width: 30px; 
+    height: 30px;
+    border-radius: 50%; 
+    overflow: hidden; 
+    position: relative;
+    background-color: var(--white)
+  }
+  .circle img {
+    width: 100%; 
+    height: auto; 
+    position: absolute; 
+    top: 0;
+    left: 0;
+  }

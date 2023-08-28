@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import Movies from "../Movies/Movies";
-import circle from '../../images/circle.jpeg';
+import Header from '../Header/Header';
 import circle2 from '../../images/circle2.png';
 // import movieData from '../../data/movieData';
 
@@ -410,16 +410,14 @@ function App() {
   ];
   const [movies, setMovies] = useState(dummyMovies);
   return (
+  <div>
+     <Header />
     <main className='App'>
-      <header className='App-header'>
-        <h1>Rancid Tomatillos</h1>
-          <div className='circle'>
-            <img src={circle2} alt="profile"></img>
-          </div>
-      </header>
       <h1>Movies</h1>
       <Movies movies={movies} />
     </main>
+  </div>
+    
   );
 }
 
