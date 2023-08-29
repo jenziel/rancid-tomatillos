@@ -36,7 +36,7 @@ function App() {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <Movies movies={movies} />
+        <Movies movies={movies.movies} />
           )}
       
     </main>
