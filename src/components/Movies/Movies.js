@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MovieCard from '../MovieCards/MovieCard';
 import './Movies.css';
 
 function Movies({ movies }) {
+  // console.log('props', props);
+  console.log('movies', movies);
   const [expandedMovieId, setExpandedMovieId] = useState(null);
 
   const toggleExpandedView = (movieId) => {
