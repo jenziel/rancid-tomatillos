@@ -1,15 +1,17 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import Movies from "../Movies/Movies";
+import MovieDetails from '../MovieDetails/MovieDetails';
 import Header from '../Header/Header';
 import circle2 from '../../images/circle2.png';
-// import movieData from '../../data/movieData';
+import {  Link, Routes, Route } from 'react-router-dom';
 
 function App() {
   
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [uniqueMovie, setUniqueMovie] = useState(null);
 
   function getMovieData() {
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
@@ -23,10 +25,27 @@ function App() {
       setIsLoading(false);
     }) 
   }
+
+  function getMovieById(id) {
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log('unique movie', data)
+        setUniqueMovie(data)
+      })
+      // .then(() => console.log('unique movie state', uniqueMovie))
+      .catch(error => {
+        console.log("Error fetching data:", error);
+      });
+  }
   
   useEffect(() => {
     getMovieData()
   }, [])
+
+  useEffect(() => {
+    console.log('uniqueMovie state updated:', uniqueMovie);
+  }, [uniqueMovie])
 
   return (
   <div>
@@ -36,32 +55,29 @@ function App() {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <Movies movies={movies.movies} />
-          )}
-      
+      <Routes>
+        <Route path="/" element={<Movies movies={movies.movies} getMovieById={getMovieById}/>}>
+        </Route>
+        
+        <Route path="/movies/436270" element={<MovieDetails movie={uniqueMovie} />}></Route>
+        <Route path="/movies/724495" element={<MovieDetails movie={uniqueMovie} />}></Route>
+        <Route path="/movies/1013860" element={<MovieDetails movie={uniqueMovie} />}></Route>
+        <Route path="/movies/505642" element={<MovieDetails movie={uniqueMovie} />}></Route>
+        <Route path="/movies/934641" element={<MovieDetails movie={uniqueMovie} />}></Route>
+        <Route path="/movies/829799" element={<MovieDetails movie={uniqueMovie} />}></Route>
+        <Route path="/movies/972313" element={<MovieDetails movie={uniqueMovie} />}></Route>
+        <Route path="/movies/882598" element={<MovieDetails movie={uniqueMovie} />}></Route>
+        <Route path="/movies/830784" element={<MovieDetails movie={uniqueMovie} />}></Route>
+
+        {/* <Route path="/movies/:id" element={<MovieDetails movie={uniqueMovie} />}></Route> */}
+      </Routes>
+        // <Movies movies={movies.movies} />
+
+          )
+          }
     </main>
-  </div>
-    
+  </div>   
   );
   }
   
 export default App;
-
-// function App(){
-//   const dummyIdeas = [
-//         { id: 1, title: 'Prank Travis', description: 'Stick googly eyes on all his stuff' },
-//         { id: 2, title: 'Make a secret password app', description: 'So you and your rideshare driver can both know neither one of you is lying' },
-//         { id: 3, title: 'Learn a martial art', description: 'To exact vengeance upon my enemies' },
-//     ]
-//   const [ideas, setIdeas] = useState(dummyIdeas)
-
-//   return(
-//   <main className='App'>
-//       <h1>IdeaBox</h1>
-// <Form addIdea={addIdea}/>
-// <Ideas ideas={ideas} deleteIdea={deleteIdea}/>
-//     </main>
-//   )
-// }
-
-// export default App;

@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 5px;
-    overflow-x: auto;
+    overflow-x: none;
     padding-left: 16vw;
     padding-right: 20vw;
   }
