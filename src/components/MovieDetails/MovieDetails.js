@@ -1,15 +1,16 @@
 import { useParams } from "react-router-dom";
 import "./MovieDetails.css";
 import { useEffect } from "react";
+import Header from '../Header/Header'
 
 function MovieDetails(props) {
-
-
-
   return (
-    <div className='unique-movie'>
-      {props.movie ? (
-        <>
+    <div className="unique-movie-page">
+     <Header />
+      <main className='App'>
+        <div className='unique-movie'>
+        {props.movie ? (
+         <>
           <div className='unique-movie'>
             <div className='vignette-container'>
               <img
@@ -41,10 +42,14 @@ function MovieDetails(props) {
               </div>
             </div>
           </div>
-        </>
-      ) : (
-        <p>Loading...</p>
-      )}
+    
+    
+          </>
+        ) : (
+          <p>Loading...</p>
+        )}
+        </div>
+      </main>
     </div>
   );
 }

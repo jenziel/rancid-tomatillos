@@ -113,3 +113,9 @@ img.backDrop {
     font-style: italic;
     font-weight: 500;
 }
+
+.unique-movie-page {
+    display:flex;
+    flex-direction:column;
+    justify-content: flex-start;
+}
