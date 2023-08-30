@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 function MovieDetails(props) {
   return (
     <div className="unique-movie-page">
-     <Header />
       <main className='App'>
         <div className='unique-movie'>
         {props.movie ? (
