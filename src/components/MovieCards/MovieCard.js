@@ -1,8 +1,9 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./MovieCard.css";
-import {  Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function MovieCard({ title, posterPath, id, getMovieById} ) {
+function MovieCard({ title, posterPath, id, getMovieById }) {
 
   const handleClick = () => {
     getMovieById(id); 
@@ -17,8 +18,14 @@ function MovieCard({ title, posterPath, id, getMovieById} ) {
   );
 }
 
-export default MovieCard;
+MovieCard.propTypes = {
+  title: PropTypes.string.isRequired,  
+  posterPath: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired, 
+  getMovieById: PropTypes.func.isRequired 
+};
 
+export default MovieCard;
 
 
 

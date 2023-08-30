@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import "./MovieDetails.css";
 import { useEffect } from "react";
 import Header from '../Header/Header'
+import PropTypes from 'prop-types';
+
 
 function MovieDetails(props) {
   return (
@@ -54,3 +56,22 @@ function MovieDetails(props) {
   );
 }
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  movie: PropTypes.shape({
+    movie: PropTypes.shape({
+      backdrop_path: PropTypes.string,
+      title: PropTypes.string.isRequired,
+      poster_path: PropTypes.string,
+      tagline: PropTypes.string,
+      overview: PropTypes.string,
+      average_rating: PropTypes.number,
+      release_date: PropTypes.string,
+      budget: PropTypes.number,
+      genres: PropTypes.arrayOf(PropTypes.string),
+      revenue: PropTypes.number,
+      runtime: PropTypes.number
+    })
+  }).isRequired
+};
+

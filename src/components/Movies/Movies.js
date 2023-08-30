@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import MovieCard from '../MovieCards/MovieCard';
 import './Movies.css';
 import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function Movies({ movies, getMovieById }) {
   const movieType = useParams().id;
-  console.log('useParams', movieType)
-  console.log('useParams', useParams().movie)
-  console.log('movies', movies);
+
   return (
     <div className="movies-container">
       {movies.map((movie) => (
@@ -22,5 +21,16 @@ function Movies({ movies, getMovieById }) {
     </div>
   );
 }
+
+Movies.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      poster_path: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired
+    })
+  ).isRequired,
+  getMovieById: PropTypes.func.isRequired
+};
 
 export default Movies;
