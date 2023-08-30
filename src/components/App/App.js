@@ -1,9 +1,10 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import Movies from "../Movies/Movies";
+import MovieDetails from '../MovieDetails';
 import Header from '../Header/Header';
 import circle2 from '../../images/circle2.png';
-// import movieData from '../../data/movieData';
+import {  Link, Routes, Route } from 'react-router-dom';
 
 function App() {
   
@@ -18,10 +19,12 @@ function App() {
       setMovies(data);
       setIsLoading(false);
     })
+
     .catch(error => { 
       setError(error.message);
       setIsLoading(false);
     }) 
+
   }
   
   useEffect(() => {
@@ -36,12 +39,15 @@ function App() {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <Movies movies={movies.movies} />
+      <Routes>
+        <Route path="/movies" element={<Movies movies={movies.movies} />}>
+        </Route>
+        <Route path="/movies/:id" element={<MovieDetails movie={movies.movies[id]} />}></Route>
+      </Routes>
+        // <Movies movies={movies.movies} />
           )}
-      
     </main>
-  </div>
-    
+  </div>   
   );
   }
   
