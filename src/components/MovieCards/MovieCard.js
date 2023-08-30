@@ -1,16 +1,43 @@
-import React, { useState } from "react";
+import React from "react";
 import "./MovieCard.css";
-import {  BrowserRouter, Link } from 'react-router-dom';
+import {  Link } from 'react-router-dom';
 
-function MovieCard({ title, posterPath, id }) {
+function MovieCard({ title, posterPath, id, getMovieById} ) {
+
+  const handleClick = () => {
+    getMovieById(id); 
+  };
+
   return (
-    <Link to={`/movie/${id}`}>
-       <img className='original-view' src={posterPath} alt={title} key={id} id={id} />
-    </Link>  
-  )
+    <div onClick={handleClick}>
+      <Link to={`/movies/${id}`}>
+        <img className='original-view' src={posterPath} alt={title} key={id} id={id} />
+      </Link> 
+    </div>
+  );
 }
 
 export default MovieCard;
+
+
+
+
+
+
+
+
+
+//   return (
+//     <div onClick={handleClick}>
+//       <Link to={`/movie/${id}`}>
+//         <img className='original-view' src={posterPath} alt={title} key={id} id={id} />
+//       </Link> 
+//     </div>
+     
+//   )
+// }
+
+// export default MovieCard;
 
 
 

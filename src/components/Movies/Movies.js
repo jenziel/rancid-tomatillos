@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import MovieCard from '../MovieCards/MovieCard';
 import './Movies.css';
+import { useParams } from 'react-router-dom';
 
-function Movies({ movies }) {
+function Movies({ movies, getMovieById }) {
+  const movieType = useParams().id;
+  console.log('useParams', movieType)
+  console.log('useParams', useParams().movie)
   console.log('movies', movies);
   return (
     <div className="movies-container">
@@ -12,6 +16,7 @@ function Movies({ movies }) {
           posterPath={movie.poster_path}
           id={movie.id}
           key={movie.id}
+          getMovieById={getMovieById}
         />
       ))}
     </div>
