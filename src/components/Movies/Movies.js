@@ -9,16 +9,19 @@ function Movies({ movies, getMovieById }) {
   console.log('useParams', useParams().movie)
   console.log('movies', movies);
   return (
+    <div> 
+    <h1>Movies</h1>
     <div className="movies-container">
       {movies.map((movie) => (
         <MovieCard
-          title={movie.title}
-          posterPath={movie.poster_path}
-          id={movie.id}
-          key={movie.id}
-          getMovieById={getMovieById}
+        title={movie.title}
+        posterPath={movie.poster_path}
+        id={movie.id}
+        key={movie.id}
+        getMovieById={getMovieById}
         />
-      ))}
+        ))}
+    </div>
     </div>
   );
 }

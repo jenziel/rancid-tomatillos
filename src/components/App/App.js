@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Movies from "../Movies/Movies";
 import MovieDetails from "../MovieDetails/MovieDetails";
 import Header from "../Header/Header";
+import Layout from "../Layout/Layout"
 import circle2 from "../../images/circle2.png";
 import { Link, Routes, Route } from "react-router-dom";
 
@@ -48,9 +49,9 @@ function App() {
 
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <main className='App'>
-        <h1>Movies</h1>
+      <Header />
         {isLoading ? (
           <p>Loading...</p>
         ) : (
@@ -61,6 +62,7 @@ function App() {
                 <Movies movies={movies.movies} getMovieById={getMovieById} />
               }
             ></Route>
+            
             <Route
               path='/movies/436270'
               element={<MovieDetails movie={uniqueMovie} />}
@@ -97,7 +99,7 @@ function App() {
               path='/movies/830784'
               element={<MovieDetails movie={uniqueMovie} />}
             ></Route>
-
+            
             {/* <Route path="/movies/:id" element={<MovieDetails movie={uniqueMovie} />}></Route> */}
           </Routes>
         )}

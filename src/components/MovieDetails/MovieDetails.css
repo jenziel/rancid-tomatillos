@@ -7,7 +7,7 @@
 
 
 .unique-movie {
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0;
   width: 100%;
@@ -64,43 +64,34 @@
   height: auto;
 } 
 
-img.backDrop {
-  padding-left: 8vw;
-  padding-right: 8vw;
-  height: 100%;
-  width: 84.5%;
-  padding-bottom: 0;
-  margin-bottom: 0;
-}
 .vignette-container {
+  margin-top:0;
   position: relative;
   display: inline-block;
   overflow: hidden;
-  height: 70%;
-  width: 100%;
+  height: auto;
+  width: 65%;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  padding-left: 4vw;
+  padding-right: 11vw;
 }
-.backdrop {
-    padding-left: 8vw;
-    padding-right: 8vw;
-    height: 100%;
-    width: 84.5%;
-    padding-bottom: 0;
-    margin-bottom: 0;
-  }
+
 
 .vignette-image {
   display: block;
-  max-width: 100%;
+  position: relative;
+  max-width: 102.5%;
   height: auto;
   border-radius: 10px;
+  padding-right: 11vw;
+
 }
 
 .vignette-overlay {
-  padding-left: 8vw;
   position: absolute;
-  left: 8vw;
   top: 0;
-  width: 76.7%;
+  width: 83%;
   height: 100%;
   background: radial-gradient(
     ellipse at center,
