@@ -1,17 +1,17 @@
 import { useParams } from "react-router-dom";
 import "./MovieDetails.css";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import Header from '../Header/Header'
 import PropTypes from 'prop-types';
 
 
 function MovieDetails(props) {
+  const {id } = useParams()
   return (
+   
     <div className="unique-movie-page">
       <main className='App'>
         <div className='unique-movie'>
-        {props.movie ? (
-         <>
           <div className='unique-movie'>
             <div className='vignette-container'>
               <img
@@ -39,16 +39,9 @@ function MovieDetails(props) {
                 <p className='genres'>Genres: {props.movie.movie.genres}</p>
                 <p className='revenue'>Gross Revenue: ${props.movie.movie.revenue}</p>
                 <p className='runtime'>Runtime: {props.movie.movie.runtime} minutes</p>
-    
               </div>
             </div>
           </div>
-    
-    
-          </>
-        ) : (
-          <p>Loading...</p>
-        )}
         </div>
       </main>
     </div>
