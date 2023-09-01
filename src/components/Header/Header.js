@@ -5,16 +5,17 @@ import "./Header.css";
 import { NavLink, Routes, Route } from "react-router-dom";
 
 function Header() {
+ 
   return (
     <header className='App-header'>
-      <NavLink to='/' className='nav'>
+      {/* <NavLink to='/' className='nav'> */}
         <div className='App-logo'>
           <img src={tomatillo} />
           <img src={tomatillo} />
           <img src={tomatillo} />
           <h1> Rancid Tomatillos</h1>
         </div>
-      </NavLink>
+      {/* </NavLink> */}
 
       <div className='circle'>
         <img src={circle2} alt='profile'></img>

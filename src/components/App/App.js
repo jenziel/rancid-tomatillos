@@ -4,11 +4,11 @@ import Movies from "../Movies/Movies";
 import MovieDetails from "../MovieDetails/MovieDetails";
 import Header from "../Header/Header";
 import { Link, Routes, Route } from "react-router-dom";
-import Error from "../Error/Error";
+import ErrorComponent from "../ErrorComponent/ErrorComponent";
 
 function App() {
   const [movies, setMovies] = useState([]);
-  const [error, setError] = useState("");
+  const [newError, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [uniqueMovie, setUniqueMovie] = useState(null);
 
@@ -31,23 +31,24 @@ function App() {
 
   function getMovieById(id) {
     setIsLoading(true);
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/3`)
       .then((response) =>  {
-        console.log(response)
+        console.log("response", response)
         if (!response.ok){
-          throw new Error("There was an error")
+          throw new Error(`${response.status} Page ${response.statusText}`)
         }
         return response.json()})
       .then((data) => {
-        console.log("unique movie", data);
-        setUniqueMovie(data);
+        console.log("unique movie", data.movie);
+        setUniqueMovie(data.movie);
         setIsLoading(false);
       })
       // .then(() => console.log('unique movie state', uniqueMovie))
-      .catch((error) => { 
-        console.log(error)
-        setError(error.message || "failed to fetch movie!");
-        console.log("Error fetching data:", error);
+      .catch((response) => { 
+     
+        console.log('newError', response)
+        setError(response || "failed to fetch movie!");
+        console.log("newError2", response);
       });
   }
 
@@ -60,16 +61,22 @@ function App() {
   }, [uniqueMovie]);
 
   useEffect(() => {
-   console.log("updated error msg", error)
-  }, [error]);
+   console.log("updated error msg newError3", newError)
+  }, [newError]);
 
+  const resetError = () => {
+    setError(null);
+  };
+
+  const resetLoading = () => {
+    setIsLoading(false);
+  };
   return (
     <div>
       <main className="App">
         <Header />
-        {error ? (
-          <Error/>
-          // <p>ur mom</p>
+        {newError ? (
+          <ErrorComponent message={newError} resetError={resetError} resetLoading={resetLoading}/>
         ) : isLoading ? (
           <p> Loading... </p>
         ) : (
@@ -84,7 +91,7 @@ function App() {
               path="/movies/:id"
               element={<MovieDetails movie={uniqueMovie} />}
             />
-             <Route path="*" element={<Error/>} />
+             <Route path="*" element={<ErrorComponent message={newError} resetError={resetError}/>} />
           </Routes>
         )}
       </main>

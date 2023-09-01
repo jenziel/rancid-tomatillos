@@ -6,8 +6,9 @@ import PropTypes from 'prop-types';
 
 
 function MovieDetails(props) {
+  const { movie } = props
   const {id} = useParams()
-  console.log(props)
+  console.log('movie deconstructed', movie)
   return (
    
     <div className="unique-movie-page">
@@ -16,8 +17,8 @@ function MovieDetails(props) {
           <div className='unique-movie'>
             <div className='vignette-container'>
               <img
-                src={props.movie.movie.backdrop_path}
-                alt={props.movie.movie.title}
+                src={movie.backdrop_path}
+                alt={movie.title}
                 className='backdrop vignette-image'
               />
               <div className='vignette-overlay'></div>
@@ -25,21 +26,21 @@ function MovieDetails(props) {
             <div className='lower-section'>
               <div className='left-side'>
                 <img
-                  src={props.movie.movie.poster_path}
-                  alt={props.movie.movie.title}
+                  src={movie.poster_path}
+                  alt={movie.title}
                   className='movie-poster'
                 />
               </div>
               <div className='right-side'>
-                <h2>{props.movie.movie.title}</h2>
-                <p className='tagline'>{props.movie.movie.tagline}</p>
-                <p className='overview'>{props.movie.movie.overview}</p>
-                <p>{props.movie.movie.average_rating}/10 stars</p>
-                <p>Released: {props.movie.movie.release_date}</p>
-                <p className='budget'>Budget: ${props.movie.movie.budget} million</p>
-                <p className='genres'>Genres: {props.movie.movie.genres}</p>
-                <p className='revenue'>Gross Revenue: ${props.movie.movie.revenue}</p>
-                <p className='runtime'>Runtime: {props.movie.movie.runtime} minutes</p>
+                <h2>{movie.title}</h2>
+                <p className='tagline'>{movie.tagline}</p>
+                <p className='overview'>{movie.overview}</p>
+                <p>{movie.average_rating}/10 stars</p>
+                <p>Released: {movie.release_date}</p>
+                <p className='budget'>Budget: ${movie.budget} million</p>
+                <p className='genres'>Genres: {movie.genres}</p>
+                <p className='revenue'>Gross Revenue: ${movie.revenue}</p>
+                <p className='runtime'>Runtime: {movie.runtime} minutes</p>
               </div>
             </div>
           </div>
