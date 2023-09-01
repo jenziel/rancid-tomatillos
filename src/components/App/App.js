@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Movies from "../Movies/Movies";
 import MovieDetails from "../MovieDetails/MovieDetails";
 import Header from "../Header/Header";
-import { Link, Routes, Route } from "react-router-dom";
+import {  Routes, Route } from "react-router-dom";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
 
 function App() {
@@ -16,16 +16,18 @@ function App() {
     fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
       .then((response) => {
       if (!response.ok){
-        throw new Error("There was an error")
+        throw new Error(`Error ${response.status}: ${response.statusText}`)
       }
       return response.json()})
       .then((data) => {
         setMovies(data);
         setIsLoading(false);
       })
-      .catch((error) => {
-        setError(error.message || "failed to fetch movies!");
-        setIsLoading(false);
+      .catch((response) => { 
+     
+        console.log('newError', response)
+        setError(response || "failed to fetch movie!");
+        console.log("newError2", response);
       });
   }
 
@@ -35,7 +37,7 @@ function App() {
       .then((response) =>  {
         console.log("response", response)
         if (!response.ok){
-          throw new Error(`${response.status} Page ${response.statusText}`)
+          throw new Error(`Error ${response.status}: Page ${response.statusText}`)
         }
         return response.json()})
       .then((data) => {
@@ -71,6 +73,10 @@ function App() {
   const resetLoading = () => {
     setIsLoading(false);
   };
+
+  // const throwError = () => {
+  //   throw new Error("Page not found")
+  // }
   return (
     <div>
       <main className="App">
@@ -91,7 +97,7 @@ function App() {
               path="/movies/:id"
               element={<MovieDetails movie={uniqueMovie} />}
             />
-             <Route path="*" element={<ErrorComponent message={newError} resetError={resetError}/>} />
+             <Route path="*" element={<ErrorComponent message={newError} resetError={resetError} resetLoading={resetLoading}/>} />
           </Routes>
         )}
       </main>
