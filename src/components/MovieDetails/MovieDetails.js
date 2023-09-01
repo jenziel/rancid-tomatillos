@@ -7,7 +7,11 @@ import PropTypes from 'prop-types';
 
 function MovieDetails(props) {
   const {id} = useParams()
-  console.log(props)
+
+  if (!props.movie || !props.movie.movie) {
+    return <div>Loading movie details...</div>;
+  }
+  
   return (
    
     <div className="unique-movie-page">
