@@ -1,5 +1,17 @@
-describe('template spec', () => {
-  it('passes', () => {
-    cy.visit('https://example.cypress.io')
+describe('Movie Details', function() {
+  it('should display movie details when a movie is clicked', function() {
+    cy.visit('http://localhost:3000')
+    cy.contains('Loading...').should('not.exist')
+    cy.get('.movies-container img.original-view').first().click()
+    cy.url().should('match', /\/movies\/\d+/) 
+    cy.get('.backdrop').should('be.visible')
+    cy.get('.movie-poster').should('be.visible')
+    cy.get('.right-side h2').should('be.visible')
+    cy.get('.tagline').should('be.visible')
+    cy.get('.overview').should('be.visible')
+    cy.get('.budget').should('contain', 'Budget:')
+    cy.get('.genres').should('contain', 'Genres:')
+    cy.get('.revenue').should('contain', 'Gross Revenue:')
+    cy.get('.runtime').should('contain', 'Runtime:')
   })
 })
