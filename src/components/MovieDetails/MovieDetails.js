@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 
 
 function MovieDetails(props) {
-  const {id } = useParams()
+  const {id} = useParams()
+  console.log(props)
   return (
    
     <div className="unique-movie-page">
@@ -64,6 +65,6 @@ MovieDetails.propTypes = {
       revenue: PropTypes.number,
       runtime: PropTypes.number
     })
-  }).isRequired
+  })
 };
 
