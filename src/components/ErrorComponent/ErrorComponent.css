@@ -1,0 +1,7 @@
+.error-msg {
+    min-height: 88.3vh;
+}
+
+.error-msg>h1{
+    margin-top: 30vh;
+}
