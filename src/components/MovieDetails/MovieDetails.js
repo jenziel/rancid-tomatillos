@@ -11,7 +11,7 @@ function MovieDetails(props) {
   
   console.log('movie deconstructed', movie)
 
-  if (!props.movie || !props.movie.movie) {
+  if (!movie ) {
     return <div>Loading movie details...</div>;
   }
   
