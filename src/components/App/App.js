@@ -33,7 +33,7 @@ function App() {
 
   function getMovieById(id) {
     setIsLoading(true);
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/3`)
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
       .then((response) =>  {
         console.log("response", response)
         if (!response.ok){
