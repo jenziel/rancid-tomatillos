@@ -1,4 +1,5 @@
 import mockMoviesData from "../fixtures/movieData.json";
+import mockMovieDetails from "../fixtures/movieDetailsData.json"
 
 describe("Movie Details", function () {
   beforeEach(() => {
@@ -10,9 +11,7 @@ describe("Movie Details", function () {
     cy.intercept(
       "GET",
       "https://rancid-tomatillos.herokuapp.com/api/v2/movies/*",
-      {
-        body: mockMoviesData.movies[0],
-      }
+      mockMovieDetails,
     ).as("fetchMovieDetails");
   });
 
@@ -23,7 +22,7 @@ describe("Movie Details", function () {
     cy.get(".movies-container img.original-view").first().click();
     cy.wait("@fetchMovieDetails");
     cy.url().should("match", /\/movies\/\d+/);
-    cy.get('.backdrop vignette-image').should('be.visible');
+    cy.get('.backdrop').should('be.visible');
     cy.get(".movie-poster").should("be.visible");
     cy.get(".right-side h2").should("be.visible");
     cy.get(".tagline").should("be.visible");
@@ -33,4 +32,4 @@ describe("Movie Details", function () {
     cy.get(".revenue").should("contain", "Gross Revenue:");
     cy.get(".runtime").should("contain", "Runtime:");
   });
-});
+})
