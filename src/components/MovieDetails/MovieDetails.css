@@ -110,3 +110,15 @@
     flex-direction:column;
     justify-content: flex-start;
 }
+
+.back-button>button {
+  /* color: white; */
+  background-color: var(--darkest-blue-black);
+  color: white;
+  box-shadow: none;
+}
+.back-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}

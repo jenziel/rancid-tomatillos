@@ -18,7 +18,6 @@ function ErrorComponent(props) {
       <div onClick={handleReset}>
           <button>Return to Homepage</button>
       </div>
-  
       </NavLink>
     </div>
   );

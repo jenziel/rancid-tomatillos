@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import "./MovieDetails.css";
 import { useState, useEffect } from "react";
 import Header from '../Header/Header'
@@ -7,7 +7,12 @@ import PropTypes from 'prop-types';
 
 function MovieDetails(props) {
   const { movie } = props
+  console.log('props', props)
   const {id} = useParams()
+  const handleReset = () => {
+    props.resetError()
+    props.resetLoading()
+  };
   
   console.log('movie deconstructed', movie)
 
@@ -21,6 +26,15 @@ function MovieDetails(props) {
       <main className='App'>
         <div className='unique-movie'>
           <div className='unique-movie'>
+                 
+      <NavLink to='/' className='nav'>
+      <div onClick={handleReset} className='back-button'>
+          <button>
+            <p>← Return to Home</p>
+          </button>
+      </div>
+      </NavLink>
+
             <div className='vignette-container'>
               <img
                 src={movie.backdrop_path}
