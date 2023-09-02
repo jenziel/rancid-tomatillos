@@ -95,7 +95,7 @@ function App() {
             />
             <Route
               path="/movies/:id"
-              element={<MovieDetails movie={uniqueMovie} />}
+              element={<MovieDetails movie={uniqueMovie} resetError={resetError} resetLoading={resetLoading} />}
             />
              <Route path="*" element={<ErrorComponent message={newError} resetError={resetError} resetLoading={resetLoading}/>} />
           </Routes>
