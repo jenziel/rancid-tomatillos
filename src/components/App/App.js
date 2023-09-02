@@ -37,7 +37,7 @@ function App() {
       .then((response) =>  {
         console.log("response", response)
         if (!response.ok){
-          throw new Error(`Error ${response.status}: Page ${response.statusText}`)
+          throw new Error(`Error ${response.status}: ${response.statusText}`)
         }
         return response.json()})
       .then((data) => {
