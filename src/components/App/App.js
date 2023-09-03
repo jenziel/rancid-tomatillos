@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Movies from "../Movies/Movies";
 import MovieDetails from "../MovieDetails/MovieDetails";
 import Header from "../Header/Header";
-import {  Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
 
 function App() {
@@ -15,42 +15,35 @@ function App() {
   function getMovieData() {
     fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
       .then((response) => {
-      if (!response.ok){
-        throw new Error(`Error ${response.status}: ${response.statusText}`)
-      }
-      return response.json()})
+        if (!response.ok) {
+          throw new Error(`Error ${response.status}: ${response.statusText}`);
+        }
+        return response.json();
+      })
       .then((data) => {
         setMovies(data);
         setIsLoading(false);
       })
-      .catch((response) => { 
-     
-        console.log('newError', response)
+      .catch((response) => {
         setError(response || "failed to fetch movie!");
-        console.log("newError2", response);
       });
   }
 
   function getMovieById(id) {
     setIsLoading(true);
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
-      .then((response) =>  {
-        console.log("response", response)
-        if (!response.ok){
-          throw new Error(`Error ${response.status}: ${response.statusText}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
-        return response.json()})
+        return response.json();
+      })
       .then((data) => {
-        console.log("unique movie", data.movie);
         setUniqueMovie(data.movie);
         setIsLoading(false);
       })
-      // .then(() => console.log('unique movie state', uniqueMovie))
-      .catch((response) => { 
-     
-        console.log('newError', response)
+      .catch((response) => {
         setError(response || "failed to fetch movie!");
-        console.log("newError2", response);
       });
   }
 
@@ -59,11 +52,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log("uniqueMovie state updated:", uniqueMovie);
   }, [uniqueMovie]);
 
   useEffect(() => {
-   console.log("updated error msg newError3", newError)
   }, [newError]);
 
   const resetError = () => {
@@ -74,30 +65,47 @@ function App() {
     setIsLoading(false);
   };
 
-  // const throwError = () => {
-  //   throw new Error("Page not found")
-  // }
   return (
     <div>
-      <main className="App">
+      <main className='App'>
         <Header />
         {newError ? (
-          <ErrorComponent message={newError} resetError={resetError} resetLoading={resetLoading}/>
+          <ErrorComponent
+            message={newError}
+            resetError={resetError}
+            resetLoading={resetLoading}
+          />
         ) : isLoading ? (
           <p> Loading... </p>
         ) : (
           <Routes>
             <Route
-              path="/"
+              path='/'
               element={
                 <Movies movies={movies.movies} getMovieById={getMovieById} />
               }
             />
             <Route
-              path="/movies/:id"
-              element={<MovieDetails movie={uniqueMovie} resetError={resetError} resetLoading={resetLoading} />}
+              path='*'
+              element={
+                <ErrorComponent
+                  message={newError}
+                  resetError={resetError}
+                  resetLoading={resetLoading}
+                />
+              }
             />
-             <Route path="*" element={<ErrorComponent message={newError} resetError={resetError} resetLoading={resetLoading}/>} />
+            <Route
+              path='/movies/:id'
+              element={
+                <MovieDetails
+                  movie={uniqueMovie}
+                  movies={movies.movies}
+                  resetError={resetError}
+                  resetLoading={resetLoading}
+                />
+              }
+            />
           </Routes>
         )}
       </main>

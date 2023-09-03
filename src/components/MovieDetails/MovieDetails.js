@@ -1,19 +1,29 @@
 import { useParams, NavLink } from "react-router-dom";
 import "./MovieDetails.css";
 import PropTypes from "prop-types";
+import ErrorComponent from "../ErrorComponent/ErrorComponent";
 
-function MovieDetails(props) {
-  const { movie } = props;
-  console.log("props", props);
+function MovieDetails({ movie, movies, resetError, resetLoading }) {
   const { id } = useParams();
+
   const handleReset = () => {
-    props.resetError();
-    props.resetLoading();
+    resetError();
+    resetLoading();
   };
 
-  console.log("movie deconstructed", movie);
+  const idAsNumber = parseInt(id);
 
-  if (!movie) {
+  if (id) {
+    var justIds = movies.map((movie) => {
+      return movie.id;
+    });
+  }
+
+  if (!justIds.includes(idAsNumber)) {
+    return (
+      <ErrorComponent resetError={resetError} resetLoading={resetLoading} />
+    );
+  } else if (!movie) {
     return <div>Loading movie details...</div>;
   }
 
@@ -64,6 +74,7 @@ function MovieDetails(props) {
     </div>
   );
 }
+
 export default MovieDetails;
 
 MovieDetails.propTypes = {
