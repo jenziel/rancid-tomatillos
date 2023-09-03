@@ -1,11 +1,11 @@
-import mockMoviesData from "../fixtures/movieData.json";
-
 describe("Display All Movies", function () {
   beforeEach(() => {
     cy.intercept(
       "GET",
       "https://rancid-tomatillos.herokuapp.com/api/v2/movies",
-      mockMoviesData
+      {
+        fixture: 'movieData.json'
+      }
     ).as("fetchMovies");
   });
 
