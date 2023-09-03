@@ -1,12 +1,6 @@
 describe("Display All Movies", function () {
   beforeEach(() => {
-    cy.intercept(
-      "GET",
-      "https://rancid-tomatillos.herokuapp.com/api/v2/movies",
-      {
-        fixture: 'movieData.json'
-      }
-    ).as("fetchMovies");
+    cy.interceptMovies();
   });
 
   it("should display all movies when visiting the app", function () {
@@ -14,10 +8,9 @@ describe("Display All Movies", function () {
     cy.wait("@fetchMovies");
     cy.contains("Loading...").should("not.exist");
     cy.get(".movies-container").should("be.visible");
-    mockMoviesData.movies.forEach((movie) => {
-      cy.get('.movies-container img[src="' + movie.poster_path + '"]').should(
-        "be.visible"
-      );
+
+    cy.fixture("movieData.json").then((mockMoviesData) => {
+      cy.checkDisplayAllMovies(mockMoviesData.movies);
     });
   });
 });
