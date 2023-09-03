@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Rancid Tomatillos Movie App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Home Page](https://user-images.githubusercontent.com/123911665/265287898-05562d1a-1492-426b-a207-06eeb2559a5e.png)
+![Movie Cards](https://user-images.githubusercontent.com/123911665/265288007-ba9c6ec9-871b-4578-8371-da336f2fe226.png)
+![Error Handling(500)](https://user-images.githubusercontent.com/123911665/265288091-30e39fcf-e40f-4eec-96a9-8ec7d2018845.png)
 
-## Available Scripts
 
-In the project directory, you can run:
+This application provides users with the latest movie information, sourced from the Rancid Tomatillos database. Viewers can browse a list of movies, view details about each movie, and receive error messages for unexpected behaviors or page visits.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Browse Movies**: Upon visiting the main page, users are presented with a gallery of movies available for viewing.
+- **Movie Details**: By clicking on a movie poster, users can view detailed information about that specific movie. This includes its budget, revenue, runtime, genre, and more.
+- **Error Handling**: In cases where there's an issue fetching movie data or if a user tries to navigate to a non-existent page, the app will display appropriate error messages.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Testing
 
-### `npm test`
+The app uses Cypress for end-to-end testing to ensure all functionalities are working as expected. There are tests available for:
+- Displaying all movies
+- Displaying individual movie details
+- Handling errors appropriately
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Custom Cypress commands have also been developed to streamline and simplify tests, improving maintainability and readability.
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository to your local machine.
+2. Install the required dependencies by running `npm install`.
+3. Start the development server using `npm start`.
+4. To run tests, use `npm run cypress`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Contributions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Contributions, feedback, and suggestions are welcome! Please open an issue or submit a pull request.
 
-### `npm run eject`
+## Acknowledgments
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thanks to Rancid Tomatillos for providing the movie database API.
