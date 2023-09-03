@@ -1,6 +1,7 @@
 import { useParams, NavLink } from "react-router-dom";
 import "./MovieDetails.css";
 import PropTypes from "prop-types";
+import ErrorComponent from "../ErrorComponent/ErrorComponent";
 
 function MovieDetails(props) {
   const { movie } = props;
@@ -10,13 +11,21 @@ function MovieDetails(props) {
     props.resetError();
     props.resetLoading();
   };
+  
+  const idAsNumber = parseInt(id)
 
-  console.log("movie deconstructed", movie);
-
-  if (!movie) {
-    return <div>Loading movie details...</div>;
+  
+  if (id) {
+    console.log('path id', id)
+    var justIds = props.movies.map(movie => {
+      return movie.id
+    })
   }
 
+    console.log('justIds', justIds)
+    console.log('justIds[0]', typeof justIds[0])
+
+    if (justIds.includes(idAsNumber)) {
   return (
     <div className='unique-movie-page'>
       <main className='App'>
@@ -64,6 +73,18 @@ function MovieDetails(props) {
     </div>
   );
 }
+
+  if (!justIds.includes(idAsNumber)) {
+    return <ErrorComponent resetError={props.resetError}
+    resetLoading = {props.resetLoading}/>
+  }
+
+ else if (!movie) {
+  console.log('path id', id)
+  return <div>Loading movie details...</div>;
+}
+}
+
 export default MovieDetails;
 
 MovieDetails.propTypes = {

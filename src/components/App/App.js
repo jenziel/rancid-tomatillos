@@ -45,7 +45,6 @@ function App() {
         setUniqueMovie(data.movie);
         setIsLoading(false);
       })
-      // .then(() => console.log('unique movie state', uniqueMovie))
       .catch((response) => { 
      
         console.log('newError', response)
@@ -93,11 +92,11 @@ function App() {
                 <Movies movies={movies.movies} getMovieById={getMovieById} />
               }
             />
+            <Route path="*" element={<ErrorComponent message={newError} resetError={resetError} resetLoading={resetLoading}/>} />
             <Route
               path="/movies/:id"
-              element={<MovieDetails movie={uniqueMovie} resetError={resetError} resetLoading={resetLoading} />}
+              element={<MovieDetails movie={uniqueMovie} movies={movies.movies} resetError={resetError} resetLoading={resetLoading} />}
             />
-             <Route path="*" element={<ErrorComponent message={newError} resetError={resetError} resetLoading={resetLoading}/>} />
           </Routes>
         )}
       </main>
