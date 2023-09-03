@@ -30,9 +30,10 @@ Cypress.Commands.add("checkMovieDetails", () => {
   cy.get(".tagline").should("be.visible");
   cy.get(".overview").should("be.visible");
   cy.get(".budget").should("contain", "Budget: $200000000 million");
-  cy.get(".genres").should("contain", "Genres: ActionFantasyScience Fiction");
+  cy.get(".genres").should("contain", "Genres: Action Fantasy Science Fiction");
   cy.get(".revenue").should("contain", "Gross Revenue: $384571691");
   cy.get(".runtime").should("contain", "Runtime: 125 minutes");
+  cy.get(".release-date").should("contain", "Released: 2022");
 });
 
 Cypress.Commands.add("checkDisplayAllMovies", (movies) => {
