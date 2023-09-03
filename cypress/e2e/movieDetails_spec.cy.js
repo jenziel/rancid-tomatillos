@@ -1,17 +1,18 @@
-import mockMoviesData from "../fixtures/movieData.json";
-import mockMovieDetails from "../fixtures/movieDetailsData.json"
-
 describe("Movie Details", function () {
   beforeEach(() => {
     cy.intercept(
       "GET",
       "https://rancid-tomatillos.herokuapp.com/api/v2/movies",
-      mockMoviesData
+      {
+        fixture: 'movieData.json'
+      }
     ).as("fetchMovies");
     cy.intercept(
       "GET",
       "https://rancid-tomatillos.herokuapp.com/api/v2/movies/*",
-      mockMovieDetails,
+      {
+        fixture: 'movieDetailsData.json'
+      }
     ).as("fetchMovieDetails");
   });
 
