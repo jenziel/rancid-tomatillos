@@ -29,10 +29,10 @@ Custom Cypress commands have also been developed to streamline and simplify test
 3. Start the development server using `npm start`.
 4. To run tests, use `npm run cypress`.
 
-## Contributions
+## Contributors
 
-Contributions, feedback, and suggestions are welcome! Please open an issue or submit a pull request.
+Jen Ziel, Avery Berryman
 
 ## Acknowledgments
 
-Thanks to Rancid Tomatillos for providing the movie database API.
+Thanks to Turing school of Software and Design for providing the movie database API.
