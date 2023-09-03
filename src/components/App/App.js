@@ -5,7 +5,7 @@ import MovieDetails from "../MovieDetails/MovieDetails";
 import Header from "../Header/Header";
 import { Routes, Route } from "react-router-dom";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
-import { fetchMovieData, fetchSingleMovie }from '../../apiCalls'
+import { fetchMovieData, fetchSingleMovie } from "../../apiCalls";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -39,12 +39,6 @@ function App() {
   useEffect(() => {
     getMovieData();
   }, []);
-
-  useEffect(() => {
-  }, [uniqueMovie]);
-
-  useEffect(() => {
-  }, [newError]);
 
   const resetError = () => {
     setError(null);
