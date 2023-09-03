@@ -5,6 +5,7 @@ import MovieDetails from "../MovieDetails/MovieDetails";
 import Header from "../Header/Header";
 import { Routes, Route } from "react-router-dom";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
+import { fetchMovieData, fetchSingleMovie }from '../../apiCalls'
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -13,13 +14,7 @@ function App() {
   const [uniqueMovie, setUniqueMovie] = useState(null);
 
   function getMovieData() {
-    fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error ${response.status}: ${response.statusText}`);
-        }
-        return response.json();
-      })
+    fetchMovieData()
       .then((data) => {
         setMovies(data);
         setIsLoading(false);
@@ -31,13 +26,7 @@ function App() {
 
   function getMovieById(id) {
     setIsLoading(true);
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error ${response.status}: ${response.statusText}`);
-        }
-        return response.json();
-      })
+    fetchSingleMovie(id)
       .then((data) => {
         setUniqueMovie(data.movie);
         setIsLoading(false);

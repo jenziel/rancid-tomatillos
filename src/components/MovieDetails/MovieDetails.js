@@ -5,7 +5,6 @@ import ErrorComponent from "../ErrorComponent/ErrorComponent";
 
 function MovieDetails({ movie, movies, resetError, resetLoading }) {
   const { id } = useParams();
-  console.log('movie', movie)
   const handleReset = () => {
     resetError();
     resetLoading();
