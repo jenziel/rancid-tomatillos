@@ -3,29 +3,30 @@ import "./MovieDetails.css";
 import PropTypes from "prop-types";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
 
-function MovieDetails(props) {
-  const { movie } = props;
-  console.log("props", props);
+function MovieDetails({ movie, movies, resetError, resetLoading }) {
   const { id } = useParams();
-  const handleReset = () => {
-    props.resetError();
-    props.resetLoading();
-  };
-  
-  const idAsNumber = parseInt(id)
 
-  
+  const handleReset = () => {
+    resetError();
+    resetLoading();
+  };
+
+  const idAsNumber = parseInt(id);
+
   if (id) {
-    console.log('path id', id)
-    var justIds = props.movies.map(movie => {
-      return movie.id
-    })
+    var justIds = movies.map((movie) => {
+      return movie.id;
+    });
   }
 
-    console.log('justIds', justIds)
-    console.log('justIds[0]', typeof justIds[0])
+  if (!justIds.includes(idAsNumber)) {
+    return (
+      <ErrorComponent resetError={resetError} resetLoading={resetLoading} />
+    );
+  } else if (!movie) {
+    return <div>Loading movie details...</div>;
+  }
 
-    if (justIds.includes(idAsNumber)) {
   return (
     <div className='unique-movie-page'>
       <main className='App'>
@@ -72,17 +73,6 @@ function MovieDetails(props) {
       </main>
     </div>
   );
-}
-
-  if (!justIds.includes(idAsNumber)) {
-    return <ErrorComponent resetError={props.resetError}
-    resetLoading = {props.resetLoading}/>
-  }
-
- else if (!movie) {
-  console.log('path id', id)
-  return <div>Loading movie details...</div>;
-}
 }
 
 export default MovieDetails;

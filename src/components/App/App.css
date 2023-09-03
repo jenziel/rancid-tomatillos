@@ -1,4 +1,3 @@
-
 @import url(https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;1,700&family=Roboto+Mono:wght@100;200;300;500&family=Space+Grotesk:wght@700&display=swap);
 
 :root {
@@ -9,22 +8,20 @@
   --lighter-blue-black: #1f252d;
   --light-gray: #1f252d;
   --darkest-blue-black: #14181c;
-  --cool-gray: #8C92AC;
-  --white: #FFFFFF;
-  --gray: #B9BDC1;
-
+  --cool-gray: #8c92ac;
+  --white: #ffffff;
+  --gray: #b9bdc1;
 }
 
 body {
   margin: 0;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 .App {
- 
   text-align: center;
   background-color: var(--lighter-blue-black);
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   color: var(--gray);
   height: 100%;
 }
@@ -33,8 +30,7 @@ body {
   color: #61dafb;
 }
 
-
-main > h1{
+main > h1 {
   padding-top: 5vh;
   margin-top: 0;
   background-color: var(--);

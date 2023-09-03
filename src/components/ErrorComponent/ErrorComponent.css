@@ -1,7 +1,26 @@
 .error-msg {
-    min-height: 88.3vh;
+  min-height: 88.3vh;
 }
 
-.error-msg>h1{
-    margin-top: 30vh;
+.error-msg > h1 {
+  margin-top: 30vh;
+}
+
+.back-button2 {
+  height: 5vh;
+  width: 15vw;
+  font-size: 2vh;
+  font-family: "Space Grotesk", sans-serif;
+  background-color: rgba(156, 230, 96, 0.7);
+  color: black;
+  border: 0.5px solid black;
+  box-shadow: none;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.back-button2:hover {
+  background-color: rgba(156, 230, 96, 0.5);
+  color: black;
+  border-radius: 16px;
 }
