@@ -21,10 +21,12 @@ body {
 }
 
 .App {
+ 
   text-align: center;
   background-color: var(--lighter-blue-black);
   font-family: 'Space Grotesk', sans-serif;
-  color: var(--gray)
+  color: var(--gray);
+  height: 100%;
 }
 
 .App-link {
