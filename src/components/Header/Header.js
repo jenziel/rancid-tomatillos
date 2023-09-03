@@ -7,9 +7,9 @@ function Header() {
   return (
     <header className='App-header'>
       <div className='App-logo'>
-        <img src={tomatillo} />
-        <img src={tomatillo} />
-        <img src={tomatillo} />
+        <img src={tomatillo} alt='tomatillo'/>
+        <img src={tomatillo} alt='tomatillo'/>
+        <img src={tomatillo} alt='tomatillo'/>
         <h1> Rancid Tomatillos</h1>
       </div>
       <div className='circle'>
