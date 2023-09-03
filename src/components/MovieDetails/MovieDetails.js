@@ -5,11 +5,16 @@ import ErrorComponent from "../ErrorComponent/ErrorComponent";
 
 function MovieDetails({ movie, movies, resetError, resetLoading }) {
   const { id } = useParams();
-
+  console.log('movie', movie)
   const handleReset = () => {
     resetError();
     resetLoading();
   };
+
+const getYearFromDate = (releaseDate) =>  {
+    const year = parseInt(releaseDate.substring(0, 4), 10); 
+    return year;
+  }
 
   const idAsNumber = parseInt(id);
 
@@ -62,9 +67,9 @@ function MovieDetails({ movie, movies, resetError, resetLoading }) {
               <p className='tagline'>{movie.tagline}</p>
               <p className='overview'>{movie.overview}</p>
               <p>{movie.average_rating}/10 stars</p>
-              <p>Released: {movie.release_date}</p>
+              <p className='release-date'>Released: {getYearFromDate(movie.release_date)}</p>
               <p className='budget'>Budget: ${movie.budget} million</p>
-              <p className='genres'>Genres: {movie.genres}</p>
+              <p className='genres'>Genres: {movie.genres.join(' ')}</p>
               <p className='revenue'>Gross Revenue: ${movie.revenue}</p>
               <p className='runtime'>Runtime: {movie.runtime} minutes</p>
             </div>
