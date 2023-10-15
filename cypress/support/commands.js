@@ -36,14 +36,4 @@ Cypress.Commands.add("checkMovieDetails", () => {
   cy.get(".release-date").should("contain", "Released: 2022");
 });
 
-Cypress.Commands.add("checkDisplayAllMovies", (movies) => {
-  movies.forEach((movie) => {
-    cy.get('.movies-container img[src="' + movie.poster_path + '"]')
-      .should("be.visible")
-      .then(($img) => {
-        if (!$img.length) {
-          throw new Error(`Image with src ${movie.poster_path} not found.`);
-        }
-      });
-  });
-});
+
